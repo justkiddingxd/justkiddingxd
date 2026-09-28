@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title description">
+  <title id="title">Leon / justkiddingxd</title>
+  <desc id="description">A minimal dark banner with Leon's name, the bio Claude-Leon-4.6-barelythinking, and an outlined blue xd monogram.</desc>
+  <rect width="1200" height="360" rx="18" fill="#111820" />
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="56" y="65" fill="#9CAFC0" font-size="22">@justkiddingxd</text>
+    <text x="48" y="226" fill="#F0F6FC" font-size="150" font-weight="600" letter-spacing="-8">Leon</text>
+    <text x="56" y="304" fill="#9CAFC0" font-size="25">Claude-Leon-4.6-barelythinking</text>
+  </g>
+  <g fill="none" stroke="#82C8F5" stroke-width="12" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M827 147L901 239M901 147L827 239" />
+    <path d="M1080 83V239M1080 193C1080 166 1060 145 1033 145C1006 145 986 166 986 193C986 220 1006 241 1033 241C1060 241 1080 220 1080 193" />
+  </g>
+  <path d="M812 284H1095" stroke="#293544" stroke-width="2" />
+  <path d="M812 284H851" stroke="#82C8F5" stroke-width="2" />
+</svg>
