@@ -18,14 +18,14 @@ from fontTools.pens.transformPen import TransformPen
 USER = 'justkiddingxd'
 TZ = ZoneInfo('Europe/Moscow')
 PROJECTS = [
-    # file, name, label (top left), description, footer (bottom left)
-    ('gridstudio', 'gridstudio', 'with linsisss · react',
+    # file, name, description, footer (bottom left)
+    ('gridstudio', 'gridstudio',
      'a site for customizing dota 2: hero grids drawn with symbols, main menu backgrounds and fonts, plus a workshop to share them', 'gridstudio.me'),
-    ('embedcat', 'embed.cat', 'next.js · react',
+    ('embedcat', 'embed.cat',
      'discord embed & components v2 builder', 'embed.cat'),
-    ('gramhistory', 'gramhistory', 'python · sqlite',
+    ('gramhistory', 'gramhistory',
      'historical gram / ton prices: a fast api, full sqlite snapshots and an inline telegram bot', 'gram.rin.ms'),
-    ('dota-loadout', 'dota-loadout', 'three.js · webgl',
+    ('dota-loadout', 'dota-loadout',
      "every dota 2 hero live in the browser, with the game's own shader, animations and particles", 'loadout.nyan.cafe'),
 ]
 # ─────────────────────────────────────────────────────────
@@ -148,14 +148,13 @@ def header():
     return svg(W, H, "hi, i'm Leon, aka dissonance on the internet, and i barely do anything cool", ''.join(o))
 
 # ── project cards (two per row in the README) ──
-def project(name, label, desc, foot):
-    W, H, P = 592, 214, 28
+def project(name, desc, foot):
+    W, H, P = 592, 184, 28
     o = [tile(0, 0, W, H)]
-    o.append(text(label, P, 42, 12, name='JBMono', fill=DIM))
-    o.append(arrow(W - P - 18, 26, DIM))
-    o.append(text(name, P - 1, 100, 34, wght=700, tracking=-0.03))
-    for i, line in enumerate(wrap(desc, 16, W - 2 * P)[:2]):
-        o.append(text(line, P, 134 + i * 23, 16, fill=SOFT))
+    o.append(arrow(W - P - 18, 38, DIM))
+    o.append(text(name, P - 1, 70, 34, wght=700, tracking=-0.03))
+    for i, line in enumerate(wrap(desc, 16, W - 2 * P - 24)[:2]):
+        o.append(text(line, P, 104 + i * 23, 16, fill=SOFT))
     o.append(text(foot, P, H - 26, 12, name='JBMono', fill=ACC))
     return svg(W, H, f'{name}: {desc}', ''.join(o))
 
@@ -231,7 +230,7 @@ if __name__ == '__main__':
     if 'header' in what:
         write(ROOT / 'assets/header.svg', header())
     if 'projects' in what:
-        for file, name, label, desc, foot in PROJECTS:
-            write(ROOT / f'assets/projects/{file}.svg', project(name, label, desc, foot))
+        for file, name, desc, foot in PROJECTS:
+            write(ROOT / f'assets/projects/{file}.svg', project(name, desc, foot))
     if 'activity' in what:
         write(ROOT / 'assets/activity.svg', activity())
