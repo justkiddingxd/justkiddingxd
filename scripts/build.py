@@ -19,7 +19,7 @@ USER = 'justkiddingxd'
 TZ = ZoneInfo('Europe/Moscow')
 PROJECTS = [
     # file, name, label (top left), description, footer (bottom left)
-    ('gridstudio', 'Grid Studio', 'with linsisss · react',
+    ('gridstudio', 'gridstudio', 'with linsisss · react',
      'a site for customizing dota 2: hero grids drawn with symbols, main menu backgrounds and fonts, plus a workshop to share them', 'gridstudio.me'),
     ('embedcat', 'embed.cat', 'next.js · react',
      'discord embed & components v2 builder', 'embed.cat'),
