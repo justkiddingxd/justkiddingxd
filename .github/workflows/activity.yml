@@ -1,0 +1,36 @@
+name: activity
+
+# redraws assets/activity.svg (last push + a year of contributions) a few times a day
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+  push:
+    paths: [scripts/build.py, .github/workflows/activity.yml]
+
+permissions:
+  contents: write
+
+concurrency: activity
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install fonttools
+      - name: fonts
+        run: |
+          mkdir -p .fonts
+          curl -fsSL -o .fonts/Onest.ttf 'https://github.com/google/fonts/raw/main/ofl/onest/Onest%5Bwght%5D.ttf'
+          curl -fsSL -o .fonts/JBMono.ttf 'https://github.com/google/fonts/raw/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf'
+      - run: python scripts/build.py activity
+      - name: commit if it changed
+        run: |
+          git add assets/activity.svg
+          git diff --cached --quiet && exit 0
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Redraw activity'
+          git push
